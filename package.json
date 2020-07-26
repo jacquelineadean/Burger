@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jacquelineadean/Sequelize.git"
+    "url": "git+https://github.com/jacquelineadean/Burger_Sequelize.git"
   },
   "author": "Jacqueline Dean",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jacquelineadean/Sequelize/issues"
+    "url": "https://github.com/jacquelineadean/Burger_Sequelize/issues"
   },
-  "homepage": "https://github.com/jacquelineadean/Sequelize#readme",
+  "homepage": "https://github.com/jacquelineadean/Burger_Sequelize#readme",
   "dependencies": {
     "express": "^4.17.1",
     "mysql": "^2.18.1",
