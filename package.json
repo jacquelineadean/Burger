@@ -18,9 +18,16 @@
   },
   "homepage": "https://github.com/jacquelineadean/Burger#readme",
   "dependencies": {
+    "basename": "^0.1.2",
+    "env": "0.0.2",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
+    "path": "^0.12.7",
     "sequelize": "^6.3.3"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
   }
 }

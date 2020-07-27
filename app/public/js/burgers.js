@@ -12,7 +12,7 @@ $("#addBurger").on("click", function (event) {
     console.log(newBurger);
 
     // Send an AJAX POST-request with jQuery
-    $.post("/api/new", newBurger)
+    $.post("/api/burgers", newBurger)
         // On success, run the following code
         .then(function () {
 
