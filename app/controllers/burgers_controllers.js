@@ -5,6 +5,7 @@
 // Dependencies
 // ===========================================================
 const db = require("../models");
+const path = require("path");
 
 // Routes
 // =============================================================
@@ -26,6 +27,7 @@ module.exports = function(app) {
 
     // POST route for saving a new burger
     app.post("/api/burgers", function(req, res) {
+        console.log(req.body);
         db.Burger.create({
             burger_name: req.body
         }).then(function(dbBurger) {

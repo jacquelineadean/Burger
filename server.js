@@ -23,8 +23,7 @@ app.use(express.static("app/public"));
 
 // Routes
 // =============================================================
-const routes = require("./app/controllers/burgers_controllers.js");
-app.use("/", routes);
+require("./app/controllers/burgers_controllers.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

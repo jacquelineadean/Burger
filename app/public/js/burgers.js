@@ -1,5 +1,3 @@
-/* global moment */
-
 // When user clicks button to add a new burger
 $("#addBurger").on("click", function (event) {
     event.preventDefault();
@@ -32,44 +30,51 @@ $("#addBurger").on("click", function (event) {
 
 });
 
-// When the page loads, grab all of the burgers
-$.get("/index", function (data) {
+// Function to grab all of the burgers
+function getBurgers(Burger) {
 
-    if (data.devoured === false) {
+    const devoured = Burger.devoured;
 
-        for (var i = 0; i < data.length; i++) {
+    if (devoured === false) {
+        $.get("/api/burgers", function(data){
+            for (var i = 0; i < data.length; i++) {
+    
+                var row = $("<ul>");
+                row.addClass("burger");
+    
+    
+                row.append("<h5>" + data[i].burger_name + "</h5>");
+                row.append(`<form action='' method=''><input type='hidden' name='devoured' value='true'><button type='submit' class="btn btn-default" id="devourBtn">Devour it!</button></form>`);
+    
+                $("#burgers-to-devour").prepend(row);
 
-            var row = $("<ul>");
-            row.addClass("burger");
-
-
-            row.append("<h5>" + data[i].burger_name + "</h5>");
-            row.append(`<form action='' method=''><input type='hidden' name='devoured' value='true'><button type='submit' class="btn btn-default" id="devourBtn">Devour it!</button></form>`);
-
-            $("#burgers-to-devour").prepend(row);
-
-        }
-
+            }
+        })
     } else {
-
-        for (var i = 0; i < data.length; i++) {
-            var row = $("<ul>");
-
-            row.append(`<h5 class="text-muted" id="devoured-burgers">` + data[i].burger_name + `</h5>`);
-
-            $("#devoured-burgers").prepend(row);
-
-        }
+        $.get("/api/burgers", function(data){
+            for (var i = 0; i < data.length; i++) {
+                var row = $("<ul>");
+    
+                row.append(`<h5 class="text-muted" id="devoured-burgers">` + data[i].burger_name + `</h5>`);
+    
+                $("#devoured-burgers").prepend(row);
+    
+            }
+        })
     }
+       
 
-});
+};
 
-$("#devourBtn").on("click", function(event){
-    event.preventDefault();
+// Initialize burgers
+getBurgers();
 
-    $.put("/api/burger/:id", function(data){
+// $("#devourBtn").on("click", function(event){
+//     event.preventDefault();
 
-    })
+//     $.put("/api/burger/:id", function(data){
+
+//     })
 
 
-})
+// })
