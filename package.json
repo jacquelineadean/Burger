@@ -1,5 +1,5 @@
 {
-  "name": "sequelize",
+  "name": "burger",
   "version": "1.0.0",
   "description": "An application that allows users to inout their favorite burgers and then devour them.",
   "main": "server.js",
@@ -9,17 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jacquelineadean/Burger_Sequelize.git"
+    "url": "git+https://github.com/jacquelineadean/Burger.git"
   },
   "author": "Jacqueline Dean",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jacquelineadean/Burger_Sequelize/issues"
+    "url": "https://github.com/jacquelineadean/Burger/issues"
   },
-  "homepage": "https://github.com/jacquelineadean/Burger_Sequelize#readme",
+  "homepage": "https://github.com/jacquelineadean/Burger#readme",
   "dependencies": {
     "express": "^4.17.1",
     "mysql": "^2.18.1",
-    "mysql2": "^2.1.0"
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.3"
   }
 }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eat-Da-Burger!</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Moment.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <h1 class="text-center">Eat-Da-Burger!</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title" id="burgersTitle">Burgers</h3>
+                        <div id="burgers-to-devour"></div>
+                        <!-- <ul class="card-text">
+                            <h5 id="burgers-to-devour">
+                                <form action='' method=''>
+                                    <input type='hidden' name='devoured' value='true'><button type='submit'
+                                        class="btn btn-default">Devour it!</button>
+                                </form>
+                            </h5>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 text-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Burgers Devoured</h5>
+                        <div class="text-muted" id="devoured-burgers"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <form class="create-update-form" action="burgers/insertOne" method="POST">
+                    <div class="form-group">
+                        <p class="text-center">Add a burger you'd devour!</p>
+                        <textarea type="text" name="newBurger"></textarea>
+                        <button class="btn btn-default" id="addBurger" type="submit">Add Burger</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="js/burger.js"></script>
+</body>
+
+</html>

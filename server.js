@@ -20,7 +20,8 @@ app.use(express.static("app/public"));
 
 // Routes
 // =============================================================
-require("./app/routes/api-routes.js")(app);
+const routes = require("./app/controllers/burgers_controllers.js");
+app.use("/", routes);
 
 // Starts the server to begin listening
 // =============================================================
