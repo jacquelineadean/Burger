@@ -29,9 +29,11 @@ module.exports = function(app) {
     app.post("/api/burgers", function(req, res) {
         console.log(req.body);
         db.Burger.create({
-            burger_name: req.body
+            burger_name: req.body.burger_name
         }).then(function(dbBurger) {
             res.json(dbBurger);
+        }).catch(function(err) {
+            res.json(err);
         });
     });
 

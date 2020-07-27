@@ -3,16 +3,15 @@ $("#addBurger").on("click", function (event) {
     event.preventDefault();
 
     // Make a newBurger object
+    const newInput = $("#newBurger");
     var newBurger = {
-        burger_name: $("#newBurger").val().trim()
+        burger_name: newInput.val().trim(),
     };
 
-    console.log(newBurger);
-
-    // Send an AJAX POST-request with jQuery
-    $.post("/api/burgers", newBurger)
-        // On success, run the following code
-        .then(function () {
+    function submitBurger(Burger) {
+        $.post("/api/burgers", Burger, function () {
+            window.location.href = "/";
+        }).then(function () {
 
             var row = $("<ul>");
             row.addClass("burger");
@@ -24,6 +23,9 @@ $("#addBurger").on("click", function (event) {
             $("#burgers-to-devour").prepend(row);
 
         });
+    };
+
+    submitBurger(newBurger);
 
     // Empty input box by replacing the value with an empty string
     $("#newBurger").val("");
@@ -31,43 +33,37 @@ $("#addBurger").on("click", function (event) {
 });
 
 // Function to grab all of the burgers
-function getBurgers(Burger) {
+$.get("/api/burgers", function (data) {
 
-    const devoured = Burger.devoured;
+    const devoured = data.devoured;
 
     if (devoured === false) {
-        $.get("/api/burgers", function(data){
-            for (var i = 0; i < data.length; i++) {
-    
-                var row = $("<ul>");
-                row.addClass("burger");
-    
-    
-                row.append("<h5>" + data[i].burger_name + "</h5>");
-                row.append(`<form action='' method=''><input type='hidden' name='devoured' value='true'><button type='submit' class="btn btn-default" id="devourBtn">Devour it!</button></form>`);
-    
-                $("#burgers-to-devour").prepend(row);
+        for (let i = 0; i < data.length; i++) {
 
-            }
-        })
-    } else {
-        $.get("/api/burgers", function(data){
-            for (var i = 0; i < data.length; i++) {
-                var row = $("<ul>");
-    
-                row.append(`<h5 class="text-muted" id="devoured-burgers">` + data[i].burger_name + `</h5>`);
-    
-                $("#devoured-burgers").prepend(row);
-    
-            }
-        })
+            const row = $("<ul>");
+            row.addClass("burger");
+
+
+            row.append("<h5>" + data[i].burger_name + "</h5>");
+            row.append(`<form action='' method=''><input type='hidden' name='devoured' value='true'><button type='submit' class="btn btn-default" id="devourBtn">Devour it!</button></form>`);
+
+            $("#burgers-to-devour").prepend(row);
+
+        }
+    } else if (devoured === true) {
+        for (let i = 0; i < data.length; i++) {
+            const row = $("<ul>");
+
+            row.append(`<h5 class="text-muted" id="devoured-burgers">` + data[i].burger_name + `</h5>`);
+
+            $("#devoured-burgers").prepend(row);
+
+        }
     }
-       
-
-};
+});
 
 // Initialize burgers
-getBurgers();
+// getBurgers();
 
 // $("#devourBtn").on("click", function(event){
 //     event.preventDefault();
