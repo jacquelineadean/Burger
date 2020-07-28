@@ -6,6 +6,7 @@
 // ===========================================================
 const db = require("../models");
 const path = require("path");
+const { truncate } = require("fs");
 
 // Routes
 // =============================================================
@@ -29,7 +30,9 @@ module.exports = function(app) {
     app.post("/api/burgers", function(req, res) {
         console.log(req.body);
         db.Burger.create({
-            burger_name: req.body.burger_name
+            routeName: req.body.routeName,
+            burger_name: req.body.burger_name,
+            devoured: false
         }).then(function(dbBurger) {
             res.json(dbBurger);
         }).catch(function(err) {
@@ -37,13 +40,13 @@ module.exports = function(app) {
         });
     });
 
-    // PUT route for updating burgers
-    app.put("/api/burgers", function(req, res) {
+    // Put route for updating burgers
+    app.put("/api/burgers/:routeName", function(req, res) {
         db.Burger.update({
             devoured: true
         },{
             where: {
-                id: req.body.id
+                routeName: req.params.routeName
             }
         }).then(function(dbBurger) {
             res.json(dbBurger);
